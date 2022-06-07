@@ -9,9 +9,9 @@ import java.util.Objects;
 public class Libro {
     private String autor;
     private String nombre;
-    private String  isbn;
-    private Double precio;
-    private String codigoEditorial;
+    private int  isbn;
+    private int cantidad;
+    private int codigoEditorial;
     
     /**
      * Constructor vacio
@@ -23,14 +23,14 @@ public class Libro {
      * @param autor del libro
      * @param nombre del libro
      * @param isbn del libro
-     * @param precio del libro
+     * @param cantidad que hay del libro
      * @param codigoEditorial del libro (codigo de la editorial del libro)
      */
-    public Libro(String autor, String nombre, String isbn, Double precio, String codigoEditorial) {
+    public Libro(String autor, String nombre, int isbn, int cantidad, int codigoEditorial) {
         this.autor = autor;
         this.nombre = nombre;
         this.isbn = isbn;
-        this.precio = precio;
+        this.cantidad = cantidad;
         this.codigoEditorial = codigoEditorial;
     }
     
@@ -39,12 +39,12 @@ public class Libro {
      * @param libro de la clase Libro
      */
     public Libro(Libro libro) {
-        this(libro.getAutor(),libro.getNombre(),libro.getIsbn(),libro.getPrecio(),libro.getCodigoEditorial());
+        this(libro.getAutor(),libro.getNombre(),libro.getIsbn(),libro.getCantidad(),libro.getCodigoEditorial());
     }
 
     @Override
     public String toString() {
-        return String.format("Nombre: %s, Autor: %s, ISBN: %-5s, Precio: %8.2f, CodigoEditorial: %8d\n", nombre,autor,isbn,precio,codigoEditorial);
+        return String.format("Nombre: %s, Autor: %s, ISBN: %-5s, Cantidad: %d, CodigoEditorial: %8d\n", nombre,autor,isbn,cantidad,codigoEditorial);
     }
     /**
      * Getters & Setters
@@ -65,27 +65,27 @@ public class Libro {
         this.nombre = nombre;
     }
 
-    public String getIsbn() {
+    public int getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(String isbn) {
+    public void setIsbn(int isbn) {
         this.isbn = isbn;
     }
 
-    public Double getPrecio() {
-        return precio;
+    public int getCantidad() {
+        return cantidad;
     }
 
-    public void setPrecio(Double precio) {
-        this.precio = precio;
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
 
-    public String getCodigoEditorial() {
+    public int getCodigoEditorial() {
         return codigoEditorial;
     }
 
-    public void setCodigoEditorial(String codigoEditorial) {
+    public void setCodigoEditorial(int codigoEditorial) {
         this.codigoEditorial = codigoEditorial;
     }
     /**

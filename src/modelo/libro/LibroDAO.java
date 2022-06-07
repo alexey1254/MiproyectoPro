@@ -2,11 +2,10 @@
 package modelo.libro;
 import modelo.Conexion;
 import java.sql.*;
-import java.util.*;
 
 /**
  *
- * @author daw
+ * @author Alejandro
  */
 public class LibroDAO {
     /**
@@ -24,18 +23,34 @@ public class LibroDAO {
         Libro libro=new Libro();
         try {
             libro.setAutor(rs.getString("autor"));
-            libro.setCodigoEditorial(rs.getString("codigoEditorial"));
-            libro.setIsbn(rs.getString("isbn"));
+            libro.setCodigoEditorial(rs.getInt("codigoEditorial"));
+            libro.setIsbn(rs.getInt("isbn"));
             libro.setNombre(rs.getString("nombre"));
-            libro.setPrecio(rs.getDouble("precio"));
+            libro.setCantidad(rs.getInt("precio"));
             return libro;
         } catch (SQLException ex) {
         }
         return null;
     }
     
-    private static int numeroLibrosEditorial() {
-        ResultSet rs=Conexion.consulta("SELECT count(*) AS numeroLibros FROM libros join editoriales as");
+    /**
+     * Busca un libro
+     * @param nombre del libro
+     * @return
+     * @throws Exception 
+     */
+    public static Libro buscarLibro(String nombre) throws Exception {
+        String sql="SELECT * from libros where nombre LIKE('%?%')";
+        PreparedStatement ps = Conexion.getPreparedStatement(sql);
+        ps.setString(1, nombre);
+                if (!ps.execute()) {
+            throw new Exception("buscarLibro: Error accediendo a la tabla libros");
+        }
+        ResultSet rs=ps.getResultSet();
+        if (rs.next()) {
+            return LibroDAO.registroLibro(rs);
+        }
+        return null;
     }
     
 }

@@ -6,7 +6,7 @@ package modelo.editorial;
  * @author Alejandro
  */
 class Editorial {
-    private String codigo;
+    private int codigo;
     private String nombre;
     private String direccion;
     
@@ -20,7 +20,7 @@ class Editorial {
      * @param nombre Editorial
      * @param direccion Editorial
      */
-    public Editorial(String codigo, String nombre, String direccion) {
+    public Editorial(int codigo, String nombre, String direccion) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.direccion = direccion;
@@ -40,11 +40,11 @@ class Editorial {
     /**
      * Getters & Setters
      */
-    public String getCodigo() {
+    public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 
