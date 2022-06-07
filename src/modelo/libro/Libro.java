@@ -11,7 +11,7 @@ public class Libro {
     private String nombre;
     private String  isbn;
     private Double precio;
-    private int codigoEditorial;
+    private String codigoEditorial;
     
     /**
      * Constructor vacio
@@ -26,7 +26,7 @@ public class Libro {
      * @param precio del libro
      * @param codigoEditorial del libro (codigo de la editorial del libro)
      */
-    public Libro(String autor, String nombre, String isbn, Double precio, int codigoEditorial) {
+    public Libro(String autor, String nombre, String isbn, Double precio, String codigoEditorial) {
         this.autor = autor;
         this.nombre = nombre;
         this.isbn = isbn;
@@ -81,11 +81,11 @@ public class Libro {
         this.precio = precio;
     }
 
-    public int getCodigoEditorial() {
+    public String getCodigoEditorial() {
         return codigoEditorial;
     }
 
-    public void setCodigoEditorial(int codigoEditorial) {
+    public void setCodigoEditorial(String codigoEditorial) {
         this.codigoEditorial = codigoEditorial;
     }
     /**
