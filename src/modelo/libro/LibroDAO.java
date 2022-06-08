@@ -52,5 +52,7 @@ public class LibroDAO {
         }
         return null;
     }
-    
+    public static void main(String[] args) throws Exception {
+
+    }
 }

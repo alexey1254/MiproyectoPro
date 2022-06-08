@@ -4,12 +4,15 @@
  */
 package vista;
 
+import controlador.ControladorBiblioteca;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author aleco
  */
 public class VistaBiblioteca extends javax.swing.JFrame {
-
+    private ControladorBiblioteca controlador;
     /**
      * Creates new form Vista
      */
@@ -29,16 +32,18 @@ public class VistaBiblioteca extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         inputBuscarEditorial = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        inputBuscarLibro1 = new javax.swing.JTextField();
+        inputBuscarLibro = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         outputTexto = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
         btnBuscar = new javax.swing.JButton();
+        btnLimpiarCampos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Buscar libro:");
 
+        inputBuscarEditorial.setActionCommand("inputBuscarEditorial");
         inputBuscarEditorial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputBuscarEditorialActionPerformed(evt);
@@ -47,9 +52,10 @@ public class VistaBiblioteca extends javax.swing.JFrame {
 
         jLabel2.setText("Buscar editorial:");
 
-        inputBuscarLibro1.addActionListener(new java.awt.event.ActionListener() {
+        inputBuscarLibro.setActionCommand("inputBuscarLibro");
+        inputBuscarLibro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputBuscarLibro1ActionPerformed(evt);
+                inputBuscarLibroActionPerformed(evt);
             }
         });
 
@@ -60,6 +66,19 @@ public class VistaBiblioteca extends javax.swing.JFrame {
         jLabel3.setText("Resultado:");
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
+        btnLimpiarCampos.setText("Limpiar Campos");
+        btnLimpiarCampos.setActionCommand("LimpiarCampos");
+        btnLimpiarCampos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarCamposActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -73,35 +92,42 @@ public class VistaBiblioteca extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(inputBuscarEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(inputBuscarLibro1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(inputBuscarLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnBuscar)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 449, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnBuscar)
+                                    .addComponent(btnLimpiarCampos))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(inputBuscarLibro1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(inputBuscarEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(51, Short.MAX_VALUE)
-                .addComponent(btnBuscar)
-                .addGap(72, 72, 72)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(inputBuscarLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnBuscar))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(inputBuscarEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnLimpiarCampos))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -110,12 +136,24 @@ public class VistaBiblioteca extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void inputBuscarEditorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputBuscarEditorialActionPerformed
-        // TODO add your handling code here:
+        // TODO: 
     }//GEN-LAST:event_inputBuscarEditorialActionPerformed
 
-    private void inputBuscarLibro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputBuscarLibro1ActionPerformed
+    private void inputBuscarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputBuscarLibroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_inputBuscarLibro1ActionPerformed
+    }//GEN-LAST:event_inputBuscarLibroActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    /**
+     * Al pulsar el boton se limpian todos los campos
+     * @param evt 
+     */
+    private void btnLimpiarCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarCamposActionPerformed
+        this.limpiarCampos();
+    }//GEN-LAST:event_btnLimpiarCamposActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,11 +190,56 @@ public class VistaBiblioteca extends javax.swing.JFrame {
             }
         });
     }
+    
+    /**
+     * Muestra un cuadro de texto como mensaje
+     * @param mensaje 
+     */
+    public void mostrarMensaje(String mensaje) {
+        JOptionPane.showMessageDialog(null, mensaje);
+    }
+    
+    /**
+     * Inicializa el controlador para añadir el action listener
+     * @param controlador 
+     */
+    public void setControlador(ControladorBiblioteca controlador) {
+        this.controlador=controlador;
+        this.btnBuscar.addActionListener(controlador);
+        this.inputBuscarEditorial.addActionListener(controlador);
+        this.inputBuscarLibro.addActionListener(controlador);
+    }
+    
+    /**
+     * 
+     * @return El nombre del libro a buscar
+     */
+    public String getNombreLibro() {
+        return this.inputBuscarLibro.getText();
+    }
+    
+    /**
+     * 
+     * @return La editorial a buscar
+     */
+    public String getEditorial() {
+        return this.inputBuscarEditorial.getText();
+    }
+    
+    /**
+     * Limpia los campos introducidos por el usuario
+     */
+    public void limpiarCampos() {
+        this.inputBuscarEditorial.setText("");
+        this.inputBuscarLibro.setText("");
+        this.outputTexto.setText("");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnLimpiarCampos;
     private javax.swing.JTextField inputBuscarEditorial;
-    private javax.swing.JTextField inputBuscarLibro1;
+    private javax.swing.JTextField inputBuscarLibro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

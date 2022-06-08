@@ -115,7 +115,7 @@ public class EditorialDAO {
      * @throws Exception 
      */
     public static Editorial buscarEditorial(String nombreEditorial) throws Exception {
-        String sql="SELECT * from editoriales where nombre LIKE('%?%')";
+        String sql="SELECT * from editoriales where nombre=?";
         PreparedStatement ps = Conexion.getPreparedStatement(sql);
         ps.setString(1,nombreEditorial);
         if (!ps.execute()) {
@@ -126,5 +126,10 @@ public class EditorialDAO {
             return EditorialDAO.registroEditorial(rs);
         }
         return null;
-    }  
+    }
+    public static void main(String[] args) throws Exception {
+        Conexion.getConexionBdBiblioteca();
+        System.out.println(buscarEditorial("Emece"));
+        
+    }
 }

@@ -5,7 +5,7 @@ package modelo.editorial;
  *
  * @author Alejandro
  */
-class Editorial {
+public class Editorial {
     private int codigo;
     private String nombre;
     private String direccion;
@@ -35,7 +35,7 @@ class Editorial {
 
     @Override
     public String toString() {
-        return String.format("Nombre: %s, Codigo: %s, Direccion: %s,\n", nombre,codigo,direccion);
+        return String.format("Nombre: %s, Codigo: %s, Direccion: %s\n", nombre,codigo,direccion);
     }
     /**
      * Getters & Setters
