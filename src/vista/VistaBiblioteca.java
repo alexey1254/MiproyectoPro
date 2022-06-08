@@ -144,22 +144,7 @@ public class VistaBiblioteca extends javax.swing.JFrame {
     }//GEN-LAST:event_inputBuscarLibroActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        //TODO: Terminar
-        if(this.getEditorial().length()==0 && this.getNombreLibro().length()==0) {
-            this.mostrarMensaje("Los dos campos están vacíos.");
-        }
-        
-        String strCodigo=this.getEditorial();
-        if (strCodigo.length()!=0) {
-            try {
-                int codigo=Integer.parseInt(strCodigo);
-                //buscar y mostrar el producto
-            } catch (java.lang.NumberFormatException ex) {
-                JOptionPane.showMessageDialog(null,"El formato del código no es un número");
-            }
-        } else {
-            mostrarMensaje("El código está vacío");
-        }
+        //TODO add your handling code here:
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     /**
@@ -224,15 +209,18 @@ public class VistaBiblioteca extends javax.swing.JFrame {
         this.inputBuscarEditorial.addActionListener(controlador);
         this.inputBuscarLibro.addActionListener(controlador);
     }
+    public void setOutputTexto(String texto) {
+        this.outputTexto.setText(texto+"\n");
+    }
     
     /**
      * 
      * @return El nombre del libro a buscar
      */
-    public String getNombreLibro() {
+    public String getInputBuscarLibro() {
         return this.inputBuscarLibro.getText();
     }
-    
+ 
     /**
      * 
      * @return La editorial a buscar
