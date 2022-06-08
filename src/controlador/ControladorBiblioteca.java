@@ -26,14 +26,23 @@ public class ControladorBiblioteca implements ActionListener {
      * TODO: Hacer el metodo bien
      * @return 
      */
-    public Editorial getVistaEditorial() {
-        String nombre=this.vista.getEditorial();
+    //public Editorial getVistaEditorial() {
+        //String nombre=this.vista.getEditorial();
         
-    }
+    //}
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void actionPerformed(ActionEvent evento) {
+        if (evento.getActionCommand().equals("Buscar")) {
+            
+        } else if(evento.getActionCommand().equals("inputBuscarLibro")){
+            
+        } else if(evento.getActionCommand().equals("inputBuscarEditorial")) {
+            
+        }
     }
-    
+    public void inicia(){
+        this.vista.setControlador(this);
+        this.vista.setVisible(true);
+    }
 }

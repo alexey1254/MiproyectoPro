@@ -1,7 +1,9 @@
 
 package modelo.editorial;
+import java.awt.List;
 import modelo.Conexion;
 import java.sql.*;
+import java.util.ArrayList;
 /**
  *
  * @author Alejandro
@@ -51,12 +53,11 @@ public class EditorialDAO {
      * o null si el producto no se encuentra
      * @throws Exception 
      */
-    public static Editorial getEditorial(String codigo) throws Exception {
-        String sql="SELECT * FROM editoriales WHERE codigo=?";
+    public static Editorial getEditorialPorNombre(String nombre) throws Exception {
+        String sql="SELECT * FROM editoriales WHERE nombre='"+nombre+"'";
         PreparedStatement ps=Conexion.getPreparedStatement(sql);
-        ps.setString(1, codigo);
         if (!ps.execute()) {
-            throw new Exception("getEditorial: Error accediendo a la tabla Editoriales. Código de editorial: "+codigo);
+            throw new Exception("getEditorial: Error accediendo a la tabla Editoriales. Nombre: "+nombre);
         }
         ResultSet rs=ps.getResultSet();
         if (rs.next()) {
@@ -101,10 +102,10 @@ public class EditorialDAO {
      * @return 0 si da error, 1 si no da error
      * @throws Exception 
      */
-    public static int borrarEditorial(String codigo) throws Exception {
+    public static int borrarEditorial(int codigo) throws Exception {
         String sql="DELETE FROM producto WHERE codigo=?";
         PreparedStatement ps = Conexion.getPreparedStatement(sql);
-        ps.setString(1, codigo);
+        ps.setInt(1, codigo);
         return ps.executeUpdate();
     }
     
@@ -114,22 +115,23 @@ public class EditorialDAO {
      * @return
      * @throws Exception 
      */
-    public static Editorial buscarEditorial(String nombreEditorial) throws Exception {
-        String sql="SELECT * from editoriales where nombre=?";
+    public static ArrayList<Editorial> buscarEditorial(String nombreEditorial) throws Exception {
+        String sql="SELECT * from editoriales where nombre LIKE '%"+nombreEditorial+"%'";
         PreparedStatement ps = Conexion.getPreparedStatement(sql);
-        ps.setString(1,nombreEditorial);
+        ArrayList<Editorial> editoriales = new ArrayList<>();
+        
         if (!ps.execute()) {
             throw new Exception("buscarEditorial: Error accediendo a la tabla Editoriales");
         }
         ResultSet rs=ps.getResultSet();
-        if (rs.next()) {
-            return EditorialDAO.registroEditorial(rs);
+        while (rs.next()) {
+            editoriales.add(EditorialDAO.registroEditorial(rs));
         }
-        return null;
+        return editoriales;
     }
     public static void main(String[] args) throws Exception {
         Conexion.getConexionBdBiblioteca();
-        System.out.println(buscarEditorial("Emece"));
+        System.out.println(getEditorialPorNombre("emece"));
         
     }
 }

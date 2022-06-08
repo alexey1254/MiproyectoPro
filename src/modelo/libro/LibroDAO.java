@@ -2,6 +2,7 @@
 package modelo.libro;
 import modelo.Conexion;
 import java.sql.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -25,8 +26,8 @@ public class LibroDAO {
             libro.setAutor(rs.getString("autor"));
             libro.setCodigoEditorial(rs.getInt("codigoEditorial"));
             libro.setIsbn(rs.getInt("isbn"));
-            libro.setNombre(rs.getString("nombre"));
-            libro.setCantidad(rs.getInt("precio"));
+            libro.setNombre(rs.getString("titulo"));
+            libro.setCantidad(rs.getInt("cantidad"));
             return libro;
         } catch (SQLException ex) {
         }
@@ -39,20 +40,20 @@ public class LibroDAO {
      * @return
      * @throws Exception 
      */
-    public static Libro buscarLibro(String nombre) throws Exception {
-        String sql="SELECT * from libros where nombre LIKE('%?%')";
+    public static ArrayList<Libro> buscarLibros(String nombreLibro) throws Exception {
+        String sql="SELECT * from libros where titulo LIKE '%"+nombreLibro+"%'";
+        ArrayList<Libro> libros = new ArrayList<>();
         PreparedStatement ps = Conexion.getPreparedStatement(sql);
-        ps.setString(1, nombre);
                 if (!ps.execute()) {
             throw new Exception("buscarLibro: Error accediendo a la tabla libros");
         }
         ResultSet rs=ps.getResultSet();
-        if (rs.next()) {
-            return LibroDAO.registroLibro(rs);
+        while (rs.next()) {
+            libros.add(LibroDAO.registroLibro(rs));
         }
-        return null;
+        return libros;
     }
     public static void main(String[] args) throws Exception {
-
+        
     }
 }

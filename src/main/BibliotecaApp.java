@@ -10,6 +10,8 @@ import controlador.*;
 public class BibliotecaApp {
     public static void main(String[] args) {
         VistaBiblioteca vista = new VistaBiblioteca();
+        ControladorBiblioteca controlador = new ControladorBiblioteca(vista);
+        controlador.inicia();
         
     }
 }

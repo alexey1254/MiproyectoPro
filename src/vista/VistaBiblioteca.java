@@ -144,7 +144,22 @@ public class VistaBiblioteca extends javax.swing.JFrame {
     }//GEN-LAST:event_inputBuscarLibroActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
+        //TODO: Terminar
+        if(this.getEditorial().length()==0 && this.getNombreLibro().length()==0) {
+            this.mostrarMensaje("Los dos campos están vacíos.");
+        }
+        
+        String strCodigo=this.getEditorial();
+        if (strCodigo.length()!=0) {
+            try {
+                int codigo=Integer.parseInt(strCodigo);
+                //buscar y mostrar el producto
+            } catch (java.lang.NumberFormatException ex) {
+                JOptionPane.showMessageDialog(null,"El formato del código no es un número");
+            }
+        } else {
+            mostrarMensaje("El código está vacío");
+        }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     /**
