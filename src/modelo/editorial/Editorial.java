@@ -35,7 +35,7 @@ public class Editorial {
 
     @Override
     public String toString() {
-        return String.format("Nombre: %s, Codigo: %s, Direccion: %s\n", nombre,codigo,direccion);
+        return String.format("Nombre: %s, Codigo: %s, Direccion: %s\n ", nombre,codigo,direccion);
     }
     /**
      * Getters & Setters

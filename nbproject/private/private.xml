@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/daw/Escritorio/GitHub/MiproyectoPro/src/vista/VistaBiblioteca.java</file>
-            <file>file:/home/daw/Escritorio/GitHub/MiproyectoPro/src/controlador/ControladorBiblioteca.java</file>
-            <file>file:/home/daw/Escritorio/GitHub/MiproyectoPro/src/modelo/editorial/EditorialDAO.java</file>
-            <file>file:/home/daw/Escritorio/GitHub/MiproyectoPro/src/modelo/libro/LibroDAO.java</file>
-            <file>file:/home/daw/Escritorio/GitHub/MiproyectoPro/src/main/BibliotecaApp.java</file>
+            <file>file:/C:/Users/aleco/Desktop/GitHub/MiproyectoPro/nbproject/project.properties</file>
+            <file>file:/C:/Users/aleco/Desktop/GitHub/MiproyectoPro/src/modelo/editorial/EditorialDAO.java</file>
+            <file>file:/C:/Users/aleco/Desktop/GitHub/MiproyectoPro/nbproject/project.xml</file>
+            <file>file:/C:/Users/aleco/Desktop/GitHub/MiproyectoPro/src/modelo/libro/LibroDAO.java</file>
         </group>
     </open-files>
 </project-private>
